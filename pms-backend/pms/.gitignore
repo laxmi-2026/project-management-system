@@ -1,0 +1,58 @@
+HELP.md
+target/
+.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Logs ###
+logs/
+*.log
+
+### Environment / Secrets ###
+# The REAL application.properties contains the live MySQL password and
+# JWT signing secret — it must never be committed to a public repo.
+# Only application.properties.example (with placeholder values) is
+# tracked in git; anyone cloning this repo copies that file to
+# application.properties and fills in their own real values locally.
+src/main/resources/application.properties
+application-local.properties
+application-secrets.properties
+*.env
+.env
+
+### OS files ###
+.DS_Store
+Thumbs.db
+
+### Packaging ###
+*.jar
+*.war
+*.class

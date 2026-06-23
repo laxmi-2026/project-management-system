@@ -1,0 +1,176 @@
+<div class="pms-topbar">
+  <button class="btn btn-sm" style="border: 1px solid var(--pms-slate-300); border-radius: var(--pms-radius); font-size: 0.82rem;"
+          [routerLink]="['/projects', projectId]">
+    <i class="bi bi-arrow-left me-1"></i> Back to Project
+  </button>
+  <h6 class="fw-bold mb-0">Kanban Board</h6>
+</div>
+
+<div class="pms-content">
+
+  <div class="text-center py-5" *ngIf="loading">
+    <div class="spinner-border" style="color: var(--pms-indigo-600);"></div>
+  </div>
+
+  <div class="row g-3" *ngIf="!loading">
+
+    <!-- TO DO column -->
+    <div class="col-md-4">
+      <div class="kanban-column">
+        <div class="d-flex justify-content-between align-items-center mb-3 px-1">
+          <h6 class="fw-bold mb-0" style="font-size: 0.85rem;"><i class="bi bi-circle me-1"></i> To Do</h6>
+          <span class="pms-badge-v2 planning">{{ todoTasks.length }}</span>
+        </div>
+        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todoTasks"
+             [cdkDropListConnectedTo]="[inProgressList, doneList]"
+             class="kanban-drop-list" (cdkDropListDropped)="onDrop($event, 'TODO')">
+          <div class="kanban-card" [ngClass]="'priority-' + task.priority.toLowerCase()"
+               *ngFor="let task of todoTasks" cdkDrag (click)="openViewModal(task)">
+            <div class="d-flex justify-content-between align-items-start mb-1">
+              <span class="pms-badge-v2" [ngClass]="priorityBadgeClass(task.priority)" style="font-size: 0.62rem;">{{ task.priority }}</span>
+              <small class="text-danger fw-semibold" *ngIf="task.overdue" style="font-size: 0.7rem;">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+              </small>
+            </div>
+            <div class="fw-semibold" style="font-size: 0.86rem;">{{ task.title }}</div>
+            <small class="text-muted d-block mt-1" *ngIf="task.assignedToUsername" style="font-size: 0.74rem;">
+              <i class="bi bi-person-fill"></i> {{ task.assignedToUsername }}
+            </small>
+            <small class="text-muted d-block" *ngIf="task.dueDate" style="font-size: 0.74rem;">
+              <i class="bi bi-calendar3"></i> {{ task.dueDate }}
+            </small>
+          </div>
+          <div class="text-center py-4" *ngIf="todoTasks.length === 0">
+            <small class="text-muted" style="font-size: 0.78rem;">No tasks here</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- IN PROGRESS column -->
+    <div class="col-md-4">
+      <div class="kanban-column">
+        <div class="d-flex justify-content-between align-items-center mb-3 px-1">
+          <h6 class="fw-bold mb-0" style="font-size: 0.85rem;"><i class="bi bi-hourglass-split me-1"></i> In Progress</h6>
+          <span class="pms-badge-v2 onhold">{{ inProgressTasks.length }}</span>
+        </div>
+        <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgressTasks"
+             [cdkDropListConnectedTo]="[todoList, doneList]"
+             class="kanban-drop-list" (cdkDropListDropped)="onDrop($event, 'IN_PROGRESS')">
+          <div class="kanban-card" [ngClass]="'priority-' + task.priority.toLowerCase()"
+               *ngFor="let task of inProgressTasks" cdkDrag (click)="openViewModal(task)">
+            <div class="d-flex justify-content-between align-items-start mb-1">
+              <span class="pms-badge-v2" [ngClass]="priorityBadgeClass(task.priority)" style="font-size: 0.62rem;">{{ task.priority }}</span>
+              <small class="text-danger fw-semibold" *ngIf="task.overdue" style="font-size: 0.7rem;">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+              </small>
+            </div>
+            <div class="fw-semibold" style="font-size: 0.86rem;">{{ task.title }}</div>
+            <small class="text-muted d-block mt-1" *ngIf="task.assignedToUsername" style="font-size: 0.74rem;">
+              <i class="bi bi-person-fill"></i> {{ task.assignedToUsername }}
+            </small>
+            <small class="text-muted d-block" *ngIf="task.dueDate" style="font-size: 0.74rem;">
+              <i class="bi bi-calendar3"></i> {{ task.dueDate }}
+            </small>
+          </div>
+          <div class="text-center py-4" *ngIf="inProgressTasks.length === 0">
+            <small class="text-muted" style="font-size: 0.78rem;">No tasks here</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DONE column -->
+    <div class="col-md-4">
+      <div class="kanban-column">
+        <div class="d-flex justify-content-between align-items-center mb-3 px-1">
+          <h6 class="fw-bold mb-0" style="font-size: 0.85rem;"><i class="bi bi-check-circle me-1"></i> Done</h6>
+          <span class="pms-badge-v2 completed">{{ doneTasks.length }}</span>
+        </div>
+        <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="doneTasks"
+             [cdkDropListConnectedTo]="[todoList, inProgressList]"
+             class="kanban-drop-list" (cdkDropListDropped)="onDrop($event, 'DONE')">
+          <div class="kanban-card" [ngClass]="'priority-' + task.priority.toLowerCase()"
+               *ngFor="let task of doneTasks" cdkDrag (click)="openViewModal(task)" style="opacity: 0.85;">
+            <div class="d-flex justify-content-between align-items-start mb-1">
+              <span class="pms-badge-v2" [ngClass]="priorityBadgeClass(task.priority)" style="font-size: 0.62rem;">{{ task.priority }}</span>
+            </div>
+            <div class="fw-semibold text-decoration-line-through" style="font-size: 0.86rem;">{{ task.title }}</div>
+            <small class="text-muted d-block mt-1" *ngIf="task.assignedToUsername" style="font-size: 0.74rem;">
+              <i class="bi bi-person-fill"></i> {{ task.assignedToUsername }}
+            </small>
+          </div>
+          <div class="text-center py-4" *ngIf="doneTasks.length === 0">
+            <small class="text-muted" style="font-size: 0.78rem;">No tasks here</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- View Task Modal — same gradient-header design used everywhere else -->
+<div *ngIf="viewingTask" class="pms-modal-backdrop" (click)="closeViewModal()">
+  <div class="pms-modal-v2" (click)="$event.stopPropagation()">
+    <div class="pms-modal-header-v2">
+      <button class="pms-modal-close" (click)="closeViewModal()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <div class="pms-modal-eyebrow">{{ viewingTask.projectName }}</div>
+      <h5 class="pms-modal-title">{{ viewingTask.title }}</h5>
+      <div class="d-flex gap-2 mt-2">
+        <span class="pms-badge-v2" [ngClass]="priorityBadgeClass(viewingTask.priority)" style="background: rgba(255,255,255,0.2); color: #fff;">
+          {{ viewingTask.priority }}
+        </span>
+        <span class="pms-badge-v2" [ngClass]="statusBadgeClass(viewingTask.status)" style="background: rgba(255,255,255,0.2); color: #fff;">
+          {{ viewingTask.status }}
+        </span>
+      </div>
+    </div>
+
+    <div class="pms-modal-body-v2">
+      <p class="pms-modal-description" *ngIf="viewingTask.description">{{ viewingTask.description }}</p>
+      <p class="pms-modal-description" *ngIf="!viewingTask.description" style="font-style: italic; color: var(--pms-slate-500);">
+        No description provided for this task.
+      </p>
+
+      <div class="pms-modal-detail-grid">
+        <div class="pms-modal-detail-item">
+          <div class="pms-modal-detail-icon"><i class="bi bi-calendar-event"></i></div>
+          <div>
+            <div class="pms-modal-detail-label">Due Date</div>
+            <div class="pms-modal-detail-value" [class.text-danger]="viewingTask.overdue">
+              {{ viewingTask.dueDate || '—' }}
+              <i class="bi bi-exclamation-triangle-fill ms-1" *ngIf="viewingTask.overdue"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="pms-modal-detail-item">
+          <div class="pms-modal-detail-icon"><i class="bi bi-person-fill"></i></div>
+          <div>
+            <div class="pms-modal-detail-label">Assigned To</div>
+            <div class="pms-modal-detail-value">{{ viewingTask.assignedToUsername || 'Unassigned' }}</div>
+          </div>
+        </div>
+
+        <div class="pms-modal-detail-item">
+          <div class="pms-modal-detail-icon"><i class="bi bi-person-badge"></i></div>
+          <div>
+            <div class="pms-modal-detail-label">Created By</div>
+            <div class="pms-modal-detail-value">{{ viewingTask.createdByUsername || '—' }}</div>
+          </div>
+        </div>
+
+        <div class="pms-modal-detail-item">
+          <div class="pms-modal-detail-icon"><i class="bi bi-folder2"></i></div>
+          <div>
+            <div class="pms-modal-detail-label">Project</div>
+            <div class="pms-modal-detail-value">{{ viewingTask.projectName }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,143 @@
+<div class="pms-topbar">
+  <div>
+    <h6 class="fw-bold mb-0">Dashboard</h6>
+    <small class="text-muted">{{ greeting }}, {{ auth.currentUser()?.username }}</small>
+  </div>
+</div>
+
+<div class="pms-content">
+
+  <div class="text-center py-5" *ngIf="loading">
+    <div class="spinner-border" style="color: var(--pms-indigo-600);"></div>
+  </div>
+
+  <ng-container *ngIf="!loading && stats">
+
+    <!-- Stat cards v2 -->
+    <div class="row g-3 mb-4">
+      <div class="col-6 col-md-3">
+        <div class="pms-stat-card-v2 cursor-pointer" style="--pms-card-accent: #4338ca;"
+             (click)="goToProjects()" title="View all projects">
+          <div class="pms-stat-icon-badge" style="background: var(--pms-gradient-indigo);">
+            <i class="bi bi-folder-fill"></i>
+          </div>
+          <div class="pms-stat-number-v2">{{ stats.totalProjects }}</div>
+          <div class="pms-stat-label-v2">{{ auth.canManage() ? 'Total Projects' : 'My Projects' }}</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="pms-stat-card-v2 cursor-pointer" style="--pms-card-accent: #059669;"
+             (click)="goToAllTasks()" title="View all tasks">
+          <div class="pms-stat-icon-badge" style="background: var(--pms-gradient-emerald);">
+            <i class="bi bi-list-task"></i>
+          </div>
+          <div class="pms-stat-number-v2">{{ stats.totalTasks }}</div>
+          <div class="pms-stat-label-v2">Total Tasks</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="pms-stat-card-v2 cursor-pointer" style="--pms-card-accent: #7c3aed;"
+             (click)="goToTasksFiltered('DONE')" title="View completed tasks">
+          <div class="pms-stat-icon-badge" style="background: var(--pms-gradient-violet);">
+            <i class="bi bi-check-circle-fill"></i>
+          </div>
+          <div class="pms-stat-number-v2">{{ stats.completedTasks }}</div>
+          <div class="pms-stat-label-v2">Completed</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="pms-stat-card-v2 cursor-pointer" style="--pms-card-accent: #dc2626;"
+             (click)="goToOverdueTasks()" title="View overdue tasks">
+          <div class="pms-stat-icon-badge" style="background: var(--pms-gradient-rose);">
+            <i class="bi bi-exclamation-triangle-fill"></i>
+          </div>
+          <div class="pms-stat-number-v2">{{ stats.overdueTasks }}</div>
+          <div class="pms-stat-label-v2">Overdue</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tasks by status -->
+    <div class="pms-card mb-4">
+      <div class="pms-card-header">Tasks by Status</div>
+      <div class="p-3">
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="cursor-pointer p-3" style="background: var(--pms-slate-100); border-radius: var(--pms-radius);"
+                 (click)="goToTasksFiltered('TODO')">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-semibold" style="font-size: 0.85rem;"><i class="bi bi-circle me-1"></i> To Do</span>
+                <span class="pms-badge-v2 planning">{{ statusCount('TODO') }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="cursor-pointer p-3" style="background: #fef9ec; border-radius: var(--pms-radius);"
+                 (click)="goToTasksFiltered('IN_PROGRESS')">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-semibold" style="font-size: 0.85rem;"><i class="bi bi-hourglass-split me-1"></i> In Progress</span>
+                <span class="pms-badge-v2 onhold">{{ statusCount('IN_PROGRESS') }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="cursor-pointer p-3" style="background: #ecfdf5; border-radius: var(--pms-radius);"
+                 (click)="goToTasksFiltered('DONE')">
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="fw-semibold" style="font-size: 0.85rem;"><i class="bi bi-check-circle me-1"></i> Done</span>
+                <span class="pms-badge-v2 completed">{{ statusCount('DONE') }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent tasks v2 — avatar-style icon, colored left accent by
+         status, hover slide effect instead of a plain row -->
+    <div class="pms-card">
+      <div class="pms-card-header d-flex justify-content-between align-items-center">
+        <span>Recent Tasks</span>
+        <a routerLink="/tasks" class="text-decoration-none" style="font-size: 0.8rem; color: var(--pms-indigo-600);">
+          View all tasks <i class="bi bi-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="p-2" *ngIf="stats.myRecentTasks.length > 0">
+        <div class="pms-recent-task-row cursor-pointer"
+             *ngFor="let task of stats.myRecentTasks"
+             (click)="openTask(task)">
+          <div class="pms-recent-task-icon"
+               [class.planning]="task.status === 'TODO'"
+               [class.onhold]="task.status === 'IN_PROGRESS'"
+               [class.completed]="task.status === 'DONE'">
+            <i class="bi" 
+               [class.bi-circle]="task.status === 'TODO'"
+               [class.bi-hourglass-split]="task.status === 'IN_PROGRESS'"
+               [class.bi-check-circle-fill]="task.status === 'DONE'"></i>
+          </div>
+          <div class="flex-grow-1" style="min-width: 0;">
+            <div class="fw-semibold text-truncate" style="font-size: 0.86rem;">{{ task.title }}</div>
+            <small class="text-muted text-truncate d-block">
+              <i class="bi bi-folder2 me-1"></i>{{ task.projectName }}
+              <span *ngIf="task.assignedToUsername"> · {{ task.assignedToUsername }}</span>
+            </small>
+          </div>
+          <span class="pms-badge-v2"
+                [class.planning]="task.status === 'TODO'"
+                [class.onhold]="task.status === 'IN_PROGRESS'"
+                [class.completed]="task.status === 'DONE'">
+            {{ task.status }}
+          </span>
+          <i class="bi bi-chevron-right text-muted ms-2"></i>
+        </div>
+      </div>
+
+      <div class="text-center py-5" *ngIf="stats.myRecentTasks.length === 0">
+        <i class="bi bi-inbox" style="font-size: 2.5rem; color: var(--pms-slate-300);"></i>
+        <p class="text-muted mb-0 mt-2">No tasks yet.</p>
+      </div>
+    </div>
+
+  </ng-container>
+</div>

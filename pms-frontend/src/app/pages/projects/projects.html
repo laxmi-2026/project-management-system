@@ -1,0 +1,167 @@
+<div class="pms-topbar">
+  <div>
+    <h6 class="fw-bold mb-0">Projects</h6>
+    <small class="text-muted">{{ projects.length }} project(s)</small>
+  </div>
+  <button class="pms-btn-primary" *ngIf="auth.canManage()" (click)="openCreateForm()">
+    <i class="bi bi-plus-lg"></i> New Project
+  </button>
+</div>
+
+<div class="pms-content">
+
+  <!-- Create / Edit Project — center modal -->
+  <div class="pms-modal-backdrop" *ngIf="showForm" (click)="closeForm()">
+    <div class="pms-task-form-card" style="width: 100%; max-width: 640px; margin: 16px;" (click)="$event.stopPropagation()">
+      <div class="pms-task-form-header">
+        <button class="pms-modal-close" (click)="closeForm()">
+          <i class="bi bi-x-lg"></i>
+        </button>
+        <div class="pms-task-form-icon">
+          <i class="bi" [class.bi-folder-plus]="!editingId" [class.bi-pencil-fill]="editingId"></i>
+        </div>
+        <div>
+          <div class="pms-task-form-eyebrow">{{ editingId ? 'Editing Project' : 'New Project' }}</div>
+          <div class="pms-task-form-title">{{ editingId ? 'Update project details' : 'Create a new project' }}</div>
+        </div>
+      </div>
+
+      <div class="pms-task-form-body">
+        <div class="alert alert-danger" style="font-size: 0.85rem;" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+          <div class="row g-3">
+
+            <div class="col-md-6">
+              <label class="form-label fw-semibold small">Project Name <span class="text-danger">*</span></label>
+              <input type="text" formControlName="name" class="form-control" maxlength="100"
+                     [class.is-invalid]="name.invalid && name.touched"
+                     placeholder="e.g. Website Redesign" style="border-radius: var(--pms-radius);">
+              <div class="invalid-feedback" *ngIf="name.invalid && name.touched">
+                <span *ngIf="name.errors?.['required']">Project name is required</span>
+                <span *ngIf="name.errors?.['maxlength']">Must be under 100 characters</span>
+                <span *ngIf="name.errors?.['pattern']">Only letters, spaces, hyphens, and apostrophes allowed — no numbers</span>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-semibold small">Status</label>
+              <select formControlName="status" class="form-select" style="border-radius: var(--pms-radius);">
+                <option value="PLANNING">Planning</option>
+                <option value="ACTIVE">Active</option>
+                <option value="ON_HOLD">On Hold</option>
+                <option value="COMPLETED">Completed</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-semibold small">Start Date</label>
+              <input type="date" formControlName="startDate" [min]="todayDateString" class="form-control" style="border-radius: var(--pms-radius);">
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-semibold small">End Date</label>
+              <input type="date" formControlName="endDate" [min]="todayDateString" class="form-control"
+                     [class.is-invalid]="form.errors?.['beforeStart']"
+                     style="border-radius: var(--pms-radius);">
+              <div class="invalid-feedback" *ngIf="form.errors?.['beforeStart']">
+                End date cannot be before start date
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label fw-semibold small">
+                Description <span class="text-muted" style="font-weight: 400; font-size: 0.78rem;">(optional)</span>
+              </label>
+              <textarea formControlName="description" rows="3" maxlength="2000" class="form-control"
+                        placeholder="What is this project about?" style="border-radius: var(--pms-radius);"></textarea>
+              <div class="text-end mt-1">
+                <small class="text-muted" style="font-size: 0.72rem;">
+                  {{ form.get('description')?.value?.length || 0 }}/2000
+                </small>
+              </div>
+            </div>
+
+            <div class="col-12 d-flex gap-2 pt-2" style="border-top: 1px solid var(--pms-slate-100);">
+              <button type="submit" class="pms-btn-primary" [disabled]="form.invalid || submitting" style="border: none;">
+                <span class="spinner-border spinner-border-sm me-2" *ngIf="submitting"></span>
+                {{ submitting ? 'Saving...' : (editingId ? 'Update Project' : 'Save Project') }}
+              </button>
+              <button type="button" class="btn btn-sm" style="border: 1px solid var(--pms-slate-300); border-radius: var(--pms-radius);"
+                      (click)="closeForm()">
+                Cancel
+              </button>
+            </div>
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project cards v2 -->
+  <div class="text-center py-5" *ngIf="loading">
+    <div class="spinner-border" style="color: var(--pms-indigo-600);"></div>
+  </div>
+
+  <div class="row g-3" *ngIf="!loading">
+    <div class="col-sm-6 col-md-4" *ngFor="let project of projects">
+      <div class="pms-project-card-v2">
+
+        <div class="pms-project-accent-bar"
+             [class.active]="project.status === 'ACTIVE'"
+             [class.completed]="project.status === 'COMPLETED'"
+             [class.onhold]="project.status === 'ON_HOLD'"
+             [class.planning]="project.status === 'PLANNING'"></div>
+
+        <div class="pms-project-body">
+          <div class="d-flex justify-content-between align-items-start mb-2">
+            <span class="pms-badge-v2"
+                  [class.active]="project.status === 'ACTIVE'"
+                  [class.completed]="project.status === 'COMPLETED'"
+                  [class.onhold]="project.status === 'ON_HOLD'"
+                  [class.planning]="project.status === 'PLANNING'">
+              {{ project.status }}
+            </span>
+            <small class="text-muted">#{{ project.id }}</small>
+          </div>
+
+          <div class="pms-project-title">{{ project.name }}</div>
+          <p class="text-muted small mb-3" *ngIf="project.description">
+            {{ project.description.length > 80 ? (project.description.substring(0,80) + '...') : project.description }}
+          </p>
+
+          <div class="mt-2">
+            <div class="d-flex justify-content-between mb-1">
+              <small class="text-muted" style="font-size: 0.72rem;">PROGRESS</small>
+              <small class="fw-bold" style="font-size: 0.78rem; color: var(--pms-slate-900);">{{ project.progressPercent }}%</small>
+            </div>
+            <div class="pms-progress-track">
+              <div class="pms-progress-fill" [style.width.%]="project.progressPercent"></div>
+            </div>
+            <small class="text-muted d-block mt-1" style="font-size: 0.74rem;">
+              {{ project.completedTasks }} / {{ project.totalTasks }} tasks done
+            </small>
+          </div>
+        </div>
+
+        <div class="pms-project-footer">
+          <a [routerLink]="['/projects', project.id]" class="pms-btn-view-detail">
+            <i class="bi bi-arrow-right-circle"></i> View Details
+          </a>
+          <button class="pms-action-icon-v2 edit" *ngIf="auth.canManage()" (click)="openEditForm(project)" title="Edit">
+            <i class="bi bi-pencil-fill"></i>
+          </button>
+          <button class="pms-action-icon-v2 delete" *ngIf="auth.isAdmin()" (click)="deleteProject(project)" title="Delete">
+            <i class="bi bi-trash-fill"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 text-center py-5" *ngIf="projects.length === 0">
+      <i class="bi bi-folder2-open" style="font-size: 2.5rem; color: var(--pms-slate-300);"></i>
+      <p class="text-muted mt-2">No projects yet.</p>
+    </div>
+  </div>
+</div>

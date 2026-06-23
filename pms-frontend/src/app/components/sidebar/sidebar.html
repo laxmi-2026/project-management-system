@@ -1,0 +1,42 @@
+<div class="pms-sidebar" *ngIf="!hideSidebar">
+
+  <div class="pms-sidebar-brand">
+    <span style="font-size: 1.5rem;">📊</span>
+    <div>
+      <div class="fw-bold" style="font-size: 1rem; line-height: 1;">PMS</div>
+      <div style="font-size: 0.68rem; opacity: 0.6;">Project Management</div>
+    </div>
+  </div>
+
+  <nav class="pms-sidebar-nav">
+    <a class="pms-nav-link" routerLink="/dashboard" routerLinkActive="active">
+      <i class="bi bi-grid-1x2-fill"></i> Dashboard
+    </a>
+    <a class="pms-nav-link" routerLink="/projects" routerLinkActive="active">
+      <i class="bi bi-kanban-fill"></i> Projects
+    </a>
+    <a class="pms-nav-link" routerLink="/tasks" routerLinkActive="active">
+      <i class="bi bi-list-task"></i> All Tasks
+    </a>
+  </nav>
+
+  <div class="pms-sidebar-footer" *ngIf="auth.isLoggedIn()">
+    <div class="d-flex align-items-center gap-2 mb-3">
+      <span class="rounded-circle d-flex align-items-center justify-content-center"
+            style="width: 32px; height: 32px; background: rgba(255,255,255,0.12); font-size: 0.85rem;">
+        {{ auth.isAdmin() ? '👑' : auth.isManager() ? '🧑‍💼' : '👤' }}
+      </span>
+      <div style="min-width: 0;">
+        <div class="fw-semibold text-truncate" style="font-size: 0.82rem;">{{ auth.currentUser()?.username }}</div>
+        <div style="font-size: 0.68rem; opacity: 0.6;">
+          {{ auth.isAdmin() ? 'Admin' : auth.isManager() ? 'Manager' : 'Member' }}
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-sm w-100" style="background: rgba(255,255,255,0.08); color: #fff; border: none; border-radius: 6px; font-size: 0.8rem;"
+            (click)="logout()">
+      <i class="bi bi-box-arrow-right me-1"></i> Logout
+    </button>
+  </div>
+
+</div>
