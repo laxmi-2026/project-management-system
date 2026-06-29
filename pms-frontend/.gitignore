@@ -1,0 +1,53 @@
+# See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
+
+# Compiled output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Miscellaneous
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
+testem.log
+/typings
+__screenshots__/
+
+# Environment files — if any environment.*.ts ever holds a real API
+# key (not the case currently, since environment.ts just points to
+# localhost:8080 / your EC2 URL), exclude it here instead of
+# committing secrets to a public repo.
+.env
+.env.local
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

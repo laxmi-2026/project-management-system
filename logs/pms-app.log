@@ -1,0 +1,5422 @@
+2026-06-23 00:30:26.164 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 00:30:26.202 [http-nio-8080-exec-9] INFO  c.pms.controller.DashboardController - GET /api/dashboard | requestedBy=admin@pms.com
+2026-06-23 00:30:26.206 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 00:30:26.209 [http-nio-8080-exec-9] INFO  com.pms.service.DashboardService - Dashboard requested | userEmail=admin@pms.com role=ROLE_ADMIN
+2026-06-23 00:30:26.210 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    CALL sp_get_dashboard_summary()
+2026-06-23 00:30:26.214 [http-nio-8080-exec-9] DEBUG c.p.r.StoredProcedureService - Stored procedure executed | sp_get_dashboard_summary | result={totalProjects=2, totalTasks=3, overdueTasks=0, activeProjects=1, completedTasks=1, completedProjects=0}
+2026-06-23 00:30:26.215 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 00:30:26.219 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 00:30:26.225 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 00:30:26.228 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    order by
+        t1_0.created_at desc
+2026-06-23 00:30:26.234 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 00:30:26.253 [http-nio-8080-exec-9] INFO  com.pms.service.DashboardService - Admin dashboard built | totalProjects=2 totalTasks=3 overdueTasks=0
+2026-06-23 00:30:34.247 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=20m11s813ms310µs700ns).
+2026-06-23 01:18:38.223 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 01:18:38.231 [http-nio-8080-exec-2] INFO  c.pms.controller.DashboardController - GET /api/dashboard | requestedBy=admin@pms.com
+2026-06-23 01:18:38.236 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 01:18:38.240 [http-nio-8080-exec-2] INFO  com.pms.service.DashboardService - Dashboard requested | userEmail=admin@pms.com role=ROLE_ADMIN
+2026-06-23 01:18:38.241 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    CALL sp_get_dashboard_summary()
+2026-06-23 01:18:38.244 [http-nio-8080-exec-2] DEBUG c.p.r.StoredProcedureService - Stored procedure executed | sp_get_dashboard_summary | result={totalProjects=2, totalTasks=3, overdueTasks=0, activeProjects=1, completedTasks=1, completedProjects=0}
+2026-06-23 01:18:38.247 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 01:18:38.250 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 01:18:38.255 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 01:18:38.257 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    order by
+        t1_0.created_at desc
+2026-06-23 01:18:38.264 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 01:18:38.267 [http-nio-8080-exec-2] INFO  com.pms.service.DashboardService - Admin dashboard built | totalProjects=2 totalTasks=3 overdueTasks=0
+2026-06-23 08:22:15.736 [HikariPool-1:housekeeper] WARN  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7h51m50s168ms388µs400ns).
+2026-06-23 08:27:22.286 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:27:22.297 [http-nio-8080-exec-3] INFO  c.pms.controller.DashboardController - GET /api/dashboard | requestedBy=admin@pms.com
+2026-06-23 08:27:22.302 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:27:22.305 [http-nio-8080-exec-3] INFO  com.pms.service.DashboardService - Dashboard requested | userEmail=admin@pms.com role=ROLE_ADMIN
+2026-06-23 08:27:22.306 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    CALL sp_get_dashboard_summary()
+2026-06-23 08:27:22.311 [http-nio-8080-exec-3] DEBUG c.p.r.StoredProcedureService - Stored procedure executed | sp_get_dashboard_summary | result={totalProjects=2, totalTasks=3, overdueTasks=0, activeProjects=1, completedTasks=1, completedProjects=0}
+2026-06-23 08:27:22.314 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 08:27:22.321 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 08:27:22.330 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 08:27:22.333 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    order by
+        t1_0.created_at desc
+2026-06-23 08:27:22.338 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 08:27:22.347 [http-nio-8080-exec-3] INFO  com.pms.service.DashboardService - Admin dashboard built | totalProjects=2 totalTasks=3 overdueTasks=0
+2026-06-23 08:27:24.699 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:27:24.705 [http-nio-8080-exec-4] INFO  c.pms.controller.DashboardController - GET /api/dashboard | requestedBy=admin@pms.com
+2026-06-23 08:27:24.709 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:27:24.713 [http-nio-8080-exec-4] INFO  com.pms.service.DashboardService - Dashboard requested | userEmail=admin@pms.com role=ROLE_ADMIN
+2026-06-23 08:27:24.713 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    CALL sp_get_dashboard_summary()
+2026-06-23 08:27:24.716 [http-nio-8080-exec-4] DEBUG c.p.r.StoredProcedureService - Stored procedure executed | sp_get_dashboard_summary | result={totalProjects=2, totalTasks=3, overdueTasks=0, activeProjects=1, completedTasks=1, completedProjects=0}
+2026-06-23 08:27:24.718 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 08:27:24.723 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 08:27:24.731 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 08:27:24.733 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    order by
+        t1_0.created_at desc
+2026-06-23 08:27:24.738 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 08:27:24.740 [http-nio-8080-exec-4] INFO  com.pms.service.DashboardService - Admin dashboard built | totalProjects=2 totalTasks=3 overdueTasks=0
+2026-06-23 08:27:52.603 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:27:52.611 [http-nio-8080-exec-8] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=laxmi@gmail.com
+2026-06-23 08:27:52.615 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:27:52.619 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        distinct p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id in (select
+            t1_0.project_id 
+        from
+            tasks t1_0 
+        where
+            t1_0.assigned_to=?) 
+    order by
+        p1_0.created_at desc
+2026-06-23 08:27:52.627 [http-nio-8080-exec-8] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=laxmi@gmail.com role=ROLE_MEMBER count=1
+2026-06-23 08:27:52.632 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 08:27:52.637 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:27:55.260 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:27:55.268 [http-nio-8080-exec-7] INFO  c.pms.controller.DashboardController - GET /api/dashboard | requestedBy=laxmi@gmail.com
+2026-06-23 08:27:55.271 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:27:55.276 [http-nio-8080-exec-7] INFO  com.pms.service.DashboardService - Dashboard requested | userEmail=laxmi@gmail.com role=ROLE_MEMBER
+2026-06-23 08:27:55.277 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+    order by
+        t1_0.due_date
+2026-06-23 08:27:55.282 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:27:55.285 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    SELECT
+        fn_count_overdue_tasks_for_user(?)
+2026-06-23 08:27:55.295 [http-nio-8080-exec-7] DEBUG c.p.r.StoredProcedureService - Stored function executed | fn_count_overdue_tasks_for_user | userId=1 result=0
+2026-06-23 08:27:55.296 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        distinct p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id in (select
+            t1_0.project_id 
+        from
+            tasks t1_0 
+        where
+            t1_0.assigned_to=?) 
+    order by
+        p1_0.created_at desc
+2026-06-23 08:27:55.303 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:27:55.308 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:27:55.312 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+    order by
+        t1_0.due_date
+2026-06-23 08:27:55.314 [http-nio-8080-exec-7] INFO  com.pms.service.DashboardService - Member dashboard built | userId=1 totalTasks=1 overdueTasks=0
+2026-06-23 08:31:49.058 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:31:49.062 [http-nio-8080-exec-1] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=admin@pms.com
+2026-06-23 08:31:49.064 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:31:49.067 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    order by
+        p1_0.created_at desc
+2026-06-23 08:31:49.071 [http-nio-8080-exec-1] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=admin@pms.com role=ROLE_ADMIN count=2
+2026-06-23 08:31:49.072 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 08:31:49.075 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:31:49.078 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 08:31:49.080 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:31:55.614 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:31:55.614 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:31:55.618 [http-nio-8080-exec-5] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=admin@pms.com
+2026-06-23 08:31:55.619 [http-nio-8080-exec-8] INFO  com.pms.controller.TaskController - GET /api/tasks | status=null priority=null projectId=null overdue=null page=0 requestedBy=admin@pms.com
+2026-06-23 08:31:55.621 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:31:55.622 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:31:55.623 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    order by
+        p1_0.created_at desc
+2026-06-23 08:31:55.624 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        (
+            ? is null 
+            or t1_0.status=?
+        ) 
+        and (
+            ? is null 
+            or t1_0.priority=?
+        ) 
+        and (
+            ? is null 
+            or p1_0.id=?
+        ) 
+        and (
+            ? is null 
+            or at1_0.id=?
+        ) 
+        and (
+            ? is null 
+            or lower(t1_0.title) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or ?=0 
+            or (
+                t1_0.due_date is not null 
+                and t1_0.due_date<? 
+                and t1_0.status<>'DONE'
+            )
+        ) 
+    order by
+        t1_0.created_at desc 
+    limit
+        ?
+2026-06-23 08:31:55.625 [http-nio-8080-exec-5] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=admin@pms.com role=ROLE_ADMIN count=2
+2026-06-23 08:31:55.627 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 08:31:55.630 [http-nio-8080-exec-8] INFO  com.pms.service.TaskService - Task search | userEmail=admin@pms.com role=ROLE_ADMIN status=null priority=null projectId=null overdue=null page=0 totalResults=3
+2026-06-23 08:31:55.630 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:31:55.630 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 08:31:55.632 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 08:31:55.635 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:32:06.518 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:32:06.523 [http-nio-8080-exec-7] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=admin@pms.com
+2026-06-23 08:32:06.526 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:32:06.529 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    order by
+        p1_0.created_at desc
+2026-06-23 08:32:06.530 [http-nio-8080-exec-7] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=admin@pms.com role=ROLE_ADMIN count=2
+2026-06-23 08:32:06.532 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 08:32:06.536 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:32:06.539 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 08:32:06.541 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:32:08.134 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:32:08.135 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:32:08.139 [http-nio-8080-exec-1] INFO  com.pms.controller.TaskController - GET /api/tasks/project/2 | requestedBy=admin@pms.com
+2026-06-23 08:32:08.139 [http-nio-8080-exec-6] INFO  c.pms.controller.ProjectController - GET /api/projects/2 | requestedBy=admin@pms.com
+2026-06-23 08:32:08.141 [http-nio-8080-exec-1] DEBUG com.pms.service.TaskService - Fetching tasks | projectId=2
+2026-06-23 08:32:08.141 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        p1_0.id=? 
+    order by
+        t1_0.created_at desc
+2026-06-23 08:32:08.141 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id=?
+2026-06-23 08:32:08.143 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 08:32:08.144 [http-nio-8080-exec-1] INFO  com.pms.service.TaskService - Tasks fetched for project | projectId=2 count=1
+2026-06-23 08:32:08.145 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 08:32:08.148 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:34:45.984 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:34:45.985 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:34:45.990 [http-nio-8080-exec-7] INFO  com.pms.controller.TaskController - GET /api/tasks/project/2 | requestedBy=admin@pms.com
+2026-06-23 08:34:45.990 [http-nio-8080-exec-9] INFO  c.pms.controller.ProjectController - GET /api/projects/2 | requestedBy=admin@pms.com
+2026-06-23 08:34:45.991 [http-nio-8080-exec-7] DEBUG com.pms.service.TaskService - Fetching tasks | projectId=2
+2026-06-23 08:34:45.992 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id=?
+2026-06-23 08:34:45.992 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        p1_0.id=? 
+    order by
+        t1_0.created_at desc
+2026-06-23 08:34:45.994 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 08:34:45.995 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 08:34:45.996 [http-nio-8080-exec-7] INFO  com.pms.service.TaskService - Tasks fetched for project | projectId=2 count=1
+2026-06-23 08:34:45.999 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:34:46.035 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:34:46.038 [http-nio-8080-exec-2] INFO  c.pms.controller.DashboardController - GET /api/dashboard | requestedBy=laxmi@gmail.com
+2026-06-23 08:34:46.040 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:34:46.042 [http-nio-8080-exec-2] INFO  com.pms.service.DashboardService - Dashboard requested | userEmail=laxmi@gmail.com role=ROLE_MEMBER
+2026-06-23 08:34:46.043 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+    order by
+        t1_0.due_date
+2026-06-23 08:34:46.047 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:34:46.052 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    SELECT
+        fn_count_overdue_tasks_for_user(?)
+2026-06-23 08:34:46.054 [http-nio-8080-exec-2] DEBUG c.p.r.StoredProcedureService - Stored function executed | fn_count_overdue_tasks_for_user | userId=1 result=0
+2026-06-23 08:34:46.054 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        distinct p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id in (select
+            t1_0.project_id 
+        from
+            tasks t1_0 
+        where
+            t1_0.assigned_to=?) 
+    order by
+        p1_0.created_at desc
+2026-06-23 08:34:46.060 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:34:46.063 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:34:46.065 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+    order by
+        t1_0.due_date
+2026-06-23 08:34:46.067 [http-nio-8080-exec-2] INFO  com.pms.service.DashboardService - Member dashboard built | userId=1 totalTasks=1 overdueTasks=0
+2026-06-23 08:35:21.572 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:35:21.577 [http-nio-8080-exec-6] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=laxmi@gmail.com
+2026-06-23 08:35:21.580 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:35:21.582 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        distinct p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id in (select
+            t1_0.project_id 
+        from
+            tasks t1_0 
+        where
+            t1_0.assigned_to=?) 
+    order by
+        p1_0.created_at desc
+2026-06-23 08:35:21.584 [http-nio-8080-exec-6] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=laxmi@gmail.com role=ROLE_MEMBER count=1
+2026-06-23 08:35:21.586 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 08:35:21.589 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:35:23.386 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:35:23.389 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:35:23.389 [http-nio-8080-exec-3] INFO  c.pms.controller.ProjectController - GET /api/projects/1 | requestedBy=laxmi@gmail.com
+2026-06-23 08:35:23.392 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id=?
+2026-06-23 08:35:23.394 [http-nio-8080-exec-5] INFO  com.pms.controller.TaskController - GET /api/tasks/project/1 | requestedBy=laxmi@gmail.com
+2026-06-23 08:35:23.395 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 08:35:23.395 [http-nio-8080-exec-5] DEBUG com.pms.service.TaskService - Fetching tasks | projectId=1
+2026-06-23 08:35:23.396 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        p1_0.id=? 
+    order by
+        t1_0.created_at desc
+2026-06-23 08:35:23.397 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 08:35:23.398 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 08:35:23.399 [http-nio-8080-exec-5] INFO  com.pms.service.TaskService - Tasks fetched for project | projectId=1 count=2
+2026-06-23 08:35:26.775 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 08:35:26.782 [http-nio-8080-exec-7] INFO  com.pms.controller.TaskController - GET /api/tasks/project/1 | requestedBy=laxmi@gmail.com
+2026-06-23 08:35:26.783 [http-nio-8080-exec-7] DEBUG com.pms.service.TaskService - Fetching tasks | projectId=1
+2026-06-23 08:35:26.784 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        p1_0.id=? 
+    order by
+        t1_0.created_at desc
+2026-06-23 08:35:26.786 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 08:35:26.788 [http-nio-8080-exec-7] INFO  com.pms.service.TaskService - Tasks fetched for project | projectId=1 count=2
+2026-06-23 08:53:16.081 [http-nio-8080-exec-3] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 578075 milliseconds ago at 2026-06-23T03:13:38.000Z. Current time: 2026-06-23T03:23:16.075Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:53:16.081 [http-nio-8080-exec-8] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 578075 milliseconds ago at 2026-06-23T03:13:38.000Z. Current time: 2026-06-23T03:23:16.075Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:53:16.363 [http-nio-8080-exec-7] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 578363 milliseconds ago at 2026-06-23T03:13:38.000Z. Current time: 2026-06-23T03:23:16.363Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:53:16.393 [http-nio-8080-exec-10] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 695393 milliseconds ago at 2026-06-23T03:11:41.000Z. Current time: 2026-06-23T03:23:16.393Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:54:05.838 [http-nio-8080-exec-1] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 627837 milliseconds ago at 2026-06-23T03:13:38.000Z. Current time: 2026-06-23T03:24:05.837Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:54:06.079 [http-nio-8080-exec-6] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 745078 milliseconds ago at 2026-06-23T03:11:41.000Z. Current time: 2026-06-23T03:24:06.078Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:55:28.965 [http-nio-8080-exec-9] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 710965 milliseconds ago at 2026-06-23T03:13:38.000Z. Current time: 2026-06-23T03:25:28.965Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:55:29.140 [http-nio-8080-exec-2] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 828140 milliseconds ago at 2026-06-23T03:11:41.000Z. Current time: 2026-06-23T03:25:29.140Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:56:28.914 [restartedMain] INFO  c.pms.ProjectManagementApplication - Starting ProjectManagementApplication using Java 21.0.11 with PID 13832 (C:\PIP\project-management-system\pms-backend\pms\target\classes started by lgadewad001 in C:\PIP\project-management-system)
+2026-06-23 08:56:28.917 [restartedMain] DEBUG c.pms.ProjectManagementApplication - Running with Spring Boot v3.5.15, Spring v6.2.19
+2026-06-23 08:56:28.918 [restartedMain] INFO  c.pms.ProjectManagementApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-23 08:56:33.833 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-23 08:56:33.839 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2026-06-23 08:56:34.867 [restartedMain] DEBUG org.hibernate.SQL - 
+    alter table projects 
+       modify column status enum ('ACTIVE','COMPLETED','ON_HOLD','PLANNING') not null
+2026-06-23 08:56:34.960 [restartedMain] DEBUG org.hibernate.SQL - 
+    alter table tasks 
+       modify column priority enum ('HIGH','LOW','MEDIUM') not null
+2026-06-23 08:56:34.977 [restartedMain] DEBUG org.hibernate.SQL - 
+    alter table tasks 
+       modify column status enum ('DONE','IN_PROGRESS','TODO') not null
+2026-06-23 08:56:34.987 [restartedMain] DEBUG org.hibernate.SQL - 
+    alter table users 
+       modify column role enum ('ROLE_ADMIN','ROLE_MANAGER','ROLE_MEMBER') not null
+2026-06-23 08:56:35.524 [restartedMain] DEBUG com.pms.security.JwtAuthFilter - Filter 'jwtAuthFilter' configured for use
+2026-06-23 08:56:35.627 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-06-23 08:56:35.629 [restartedMain] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-06-23 08:56:37.126 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-06-23 08:56:38.344 [restartedMain] INFO  c.pms.ProjectManagementApplication - Started ProjectManagementApplication in 9.947 seconds (process running for 12.01)
+2026-06-23 08:56:38.348 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /api-docs endpoint is enabled by default. To disable it in production, set the property 'springdoc.api-docs.enabled=false'
+2026-06-23 08:56:38.349 [restartedMain] WARN  o.s.c.events.SpringDocAppInitializer - SpringDoc /swagger-ui.html endpoint is enabled by default. To disable it in production, set the property 'springdoc.swagger-ui.enabled=false'
+2026-06-23 08:56:47.265 [http-nio-8080-exec-2] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 906265 milliseconds ago at 2026-06-23T03:11:41.000Z. Current time: 2026-06-23T03:26:47.265Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:56:53.766 [http-nio-8080-exec-4] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 912766 milliseconds ago at 2026-06-23T03:11:41.000Z. Current time: 2026-06-23T03:26:53.766Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:56:56.997 [http-nio-8080-exec-6] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 915997 milliseconds ago at 2026-06-23T03:11:41.000Z. Current time: 2026-06-23T03:26:56.997Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:56:58.664 [http-nio-8080-exec-8] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 917663 milliseconds ago at 2026-06-23T03:11:41.000Z. Current time: 2026-06-23T03:26:58.663Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:56:59.879 [http-nio-8080-exec-9] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 918879 milliseconds ago at 2026-06-23T03:11:41.000Z. Current time: 2026-06-23T03:26:59.879Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:56:59.888 [http-nio-8080-exec-1] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 918888 milliseconds ago at 2026-06-23T03:11:41.000Z. Current time: 2026-06-23T03:26:59.888Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:57:01.984 [http-nio-8080-exec-2] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 920983 milliseconds ago at 2026-06-23T03:11:41.000Z. Current time: 2026-06-23T03:27:01.983Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:57:03.726 [http-nio-8080-exec-4] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 922726 milliseconds ago at 2026-06-23T03:11:41.000Z. Current time: 2026-06-23T03:27:03.726Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:57:04.817 [http-nio-8080-exec-5] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 923816 milliseconds ago at 2026-06-23T03:11:41.000Z. Current time: 2026-06-23T03:27:04.816Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:57:04.817 [http-nio-8080-exec-6] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 923816 milliseconds ago at 2026-06-23T03:11:41.000Z. Current time: 2026-06-23T03:27:04.816Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:57:12.032 [http-nio-8080-exec-8] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 814032 milliseconds ago at 2026-06-23T03:13:38.000Z. Current time: 2026-06-23T03:27:12.032Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:57:13.981 [http-nio-8080-exec-9] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 815981 milliseconds ago at 2026-06-23T03:13:38.000Z. Current time: 2026-06-23T03:27:13.981Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:57:15.337 [http-nio-8080-exec-1] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 817337 milliseconds ago at 2026-06-23T03:13:38.000Z. Current time: 2026-06-23T03:27:15.337Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:57:16.326 [http-nio-8080-exec-2] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 818326 milliseconds ago at 2026-06-23T03:13:38.000Z. Current time: 2026-06-23T03:27:16.326Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:57:16.330 [http-nio-8080-exec-4] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 818330 milliseconds ago at 2026-06-23T03:13:38.000Z. Current time: 2026-06-23T03:27:16.330Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:58:48.547 [http-nio-8080-exec-4] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 1027547 milliseconds ago at 2026-06-23T03:11:41.000Z. Current time: 2026-06-23T03:28:48.547Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 08:58:48.551 [http-nio-8080-exec-2] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 1027551 milliseconds ago at 2026-06-23T03:11:41.000Z. Current time: 2026-06-23T03:28:48.551Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 09:00:18.582 [http-nio-8080-exec-8] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 1000582 milliseconds ago at 2026-06-23T03:13:38.000Z. Current time: 2026-06-23T03:30:18.582Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 09:00:19.998 [http-nio-8080-exec-9] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 1001998 milliseconds ago at 2026-06-23T03:13:38.000Z. Current time: 2026-06-23T03:30:19.998Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 09:00:21.020 [http-nio-8080-exec-3] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 1003018 milliseconds ago at 2026-06-23T03:13:38.000Z. Current time: 2026-06-23T03:30:21.018Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 09:00:21.023 [http-nio-8080-exec-4] ERROR com.pms.security.JwtAuthFilter - Cannot authenticate user | reason=JWT expired 1003022 milliseconds ago at 2026-06-23T03:13:38.000Z. Current time: 2026-06-23T03:30:21.022Z. Allowed clock skew: 0 milliseconds.
+2026-06-23 09:01:11.797 [http-nio-8080-exec-6] INFO  com.pms.controller.AuthController - POST /api/auth/login | email=admin@pms.com
+2026-06-23 09:01:11.798 [http-nio-8080-exec-6] INFO  com.pms.service.AuthService - Login attempt | email=admin@pms.com
+2026-06-23 09:01:12.030 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:12.230 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:12.234 [http-nio-8080-exec-6] INFO  com.pms.service.AuthService - Login successful | userId=2 email=admin@pms.com role=ROLE_ADMIN
+2026-06-23 09:01:12.234 [http-nio-8080-exec-6] INFO  com.pms.controller.AuthController - Login response sent | email=admin@pms.com role=ROLE_ADMIN
+2026-06-23 09:01:12.347 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:12.356 [http-nio-8080-exec-5] INFO  c.pms.controller.DashboardController - GET /api/dashboard | requestedBy=admin@pms.com
+2026-06-23 09:01:12.371 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:12.373 [http-nio-8080-exec-5] INFO  com.pms.service.DashboardService - Dashboard requested | userEmail=admin@pms.com role=ROLE_ADMIN
+2026-06-23 09:01:12.412 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    CALL sp_get_dashboard_summary()
+2026-06-23 09:01:12.424 [http-nio-8080-exec-5] DEBUG c.p.r.StoredProcedureService - Stored procedure executed | sp_get_dashboard_summary | result={completedTasks=1, activeProjects=1, overdueTasks=0, totalTasks=3, totalProjects=2, completedProjects=0}
+2026-06-23 09:01:12.434 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 09:01:12.437 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 09:01:12.441 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 09:01:12.466 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    order by
+        t1_0.created_at desc
+2026-06-23 09:01:12.493 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 09:01:12.498 [http-nio-8080-exec-5] INFO  com.pms.service.DashboardService - Admin dashboard built | totalProjects=2 totalTasks=3 overdueTasks=0
+2026-06-23 09:01:36.857 [http-nio-8080-exec-9] INFO  com.pms.controller.AuthController - POST /api/auth/login | email=laxmi@gmail.com
+2026-06-23 09:01:36.858 [http-nio-8080-exec-9] INFO  com.pms.service.AuthService - Login attempt | email=laxmi@gmail.com
+2026-06-23 09:01:36.860 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:36.951 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:36.955 [http-nio-8080-exec-9] INFO  com.pms.service.AuthService - Login successful | userId=1 email=laxmi@gmail.com role=ROLE_MEMBER
+2026-06-23 09:01:36.955 [http-nio-8080-exec-9] INFO  com.pms.controller.AuthController - Login response sent | email=laxmi@gmail.com role=ROLE_MEMBER
+2026-06-23 09:01:36.982 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:36.987 [http-nio-8080-exec-3] INFO  c.pms.controller.DashboardController - GET /api/dashboard | requestedBy=laxmi@gmail.com
+2026-06-23 09:01:36.990 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:36.992 [http-nio-8080-exec-3] INFO  com.pms.service.DashboardService - Dashboard requested | userEmail=laxmi@gmail.com role=ROLE_MEMBER
+2026-06-23 09:01:36.999 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+    order by
+        t1_0.due_date
+2026-06-23 09:01:37.008 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:01:37.010 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    SELECT
+        fn_count_overdue_tasks_for_user(?)
+2026-06-23 09:01:37.014 [http-nio-8080-exec-3] DEBUG c.p.r.StoredProcedureService - Stored function executed | fn_count_overdue_tasks_for_user | userId=1 result=0
+2026-06-23 09:01:37.022 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        distinct p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id in (select
+            t1_0.project_id 
+        from
+            tasks t1_0 
+        where
+            t1_0.assigned_to=?) 
+    order by
+        p1_0.created_at desc
+2026-06-23 09:01:37.026 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:01:37.029 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:01:37.033 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+    order by
+        t1_0.due_date
+2026-06-23 09:01:37.036 [http-nio-8080-exec-3] INFO  com.pms.service.DashboardService - Member dashboard built | userId=1 totalTasks=1 overdueTasks=0
+2026-06-23 09:01:39.273 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:39.279 [http-nio-8080-exec-2] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=laxmi@gmail.com
+2026-06-23 09:01:39.284 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:39.288 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        distinct p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id in (select
+            t1_0.project_id 
+        from
+            tasks t1_0 
+        where
+            t1_0.assigned_to=?) 
+    order by
+        p1_0.created_at desc
+2026-06-23 09:01:39.291 [http-nio-8080-exec-2] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=laxmi@gmail.com role=ROLE_MEMBER count=1
+2026-06-23 09:01:39.294 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:01:39.299 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:01:40.786 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:40.789 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:40.792 [http-nio-8080-exec-5] INFO  c.pms.controller.ProjectController - GET /api/projects/1 | requestedBy=laxmi@gmail.com
+2026-06-23 09:01:40.794 [http-nio-8080-exec-8] INFO  com.pms.controller.TaskController - GET /api/tasks/project/1 | requestedBy=laxmi@gmail.com
+2026-06-23 09:01:40.797 [http-nio-8080-exec-8] DEBUG com.pms.service.TaskService - Fetching tasks | projectId=1
+2026-06-23 09:01:40.798 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id=?
+2026-06-23 09:01:40.801 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        p1_0.id=? 
+    order by
+        t1_0.created_at desc
+2026-06-23 09:01:40.803 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:01:40.806 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 09:01:40.806 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:01:40.808 [http-nio-8080-exec-8] INFO  com.pms.service.TaskService - Tasks fetched for project | projectId=1 count=2
+2026-06-23 09:01:42.632 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:42.638 [http-nio-8080-exec-10] INFO  com.pms.controller.TaskController - GET /api/tasks/project/1 | requestedBy=laxmi@gmail.com
+2026-06-23 09:01:42.639 [http-nio-8080-exec-10] DEBUG com.pms.service.TaskService - Fetching tasks | projectId=1
+2026-06-23 09:01:42.640 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        p1_0.id=? 
+    order by
+        t1_0.created_at desc
+2026-06-23 09:01:42.644 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 09:01:42.646 [http-nio-8080-exec-10] INFO  com.pms.service.TaskService - Tasks fetched for project | projectId=1 count=2
+2026-06-23 09:01:48.603 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:48.604 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:48.609 [http-nio-8080-exec-4] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=laxmi@gmail.com
+2026-06-23 09:01:48.613 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:48.616 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        distinct p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id in (select
+            t1_0.project_id 
+        from
+            tasks t1_0 
+        where
+            t1_0.assigned_to=?) 
+    order by
+        p1_0.created_at desc
+2026-06-23 09:01:48.619 [http-nio-8080-exec-3] INFO  com.pms.controller.TaskController - GET /api/tasks | status=null priority=null projectId=null overdue=null page=0 requestedBy=laxmi@gmail.com
+2026-06-23 09:01:48.619 [http-nio-8080-exec-4] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=laxmi@gmail.com role=ROLE_MEMBER count=1
+2026-06-23 09:01:48.621 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:01:48.624 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:48.624 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:01:48.656 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+        and (
+            ? is null 
+            or t1_0.status=?
+        ) 
+        and (
+            ? is null 
+            or t1_0.priority=?
+        ) 
+        and (
+            ? is null 
+            or p1_0.id=?
+        ) 
+        and (
+            ? is null 
+            or lower(t1_0.title) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or ?=0 
+            or (
+                t1_0.due_date is not null 
+                and t1_0.due_date<? 
+                and t1_0.status<>'DONE'
+            )
+        ) 
+    order by
+        t1_0.created_at desc 
+    limit
+        ?
+2026-06-23 09:01:48.664 [http-nio-8080-exec-3] INFO  com.pms.service.TaskService - Task search | userEmail=laxmi@gmail.com role=ROLE_MEMBER status=null priority=null projectId=null overdue=null page=0 totalResults=1
+2026-06-23 09:01:48.666 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 09:01:56.419 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:56.427 [http-nio-8080-exec-6] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=admin@pms.com
+2026-06-23 09:01:56.432 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:01:56.438 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    order by
+        p1_0.created_at desc
+2026-06-23 09:01:56.442 [http-nio-8080-exec-6] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=admin@pms.com role=ROLE_ADMIN count=2
+2026-06-23 09:01:56.445 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:01:56.450 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:01:56.454 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:01:56.458 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:02:13.128 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:02:13.170 [http-nio-8080-exec-8] INFO  c.pms.controller.ProjectController - PUT /api/projects/2 | newName='Momentum Appgfhgf655665' requestedBy=admin@pms.com
+2026-06-23 09:02:13.171 [http-nio-8080-exec-8] INFO  com.pms.service.ProjectService - Project update initiated | projectId=2 newName='Momentum Appgfhgf655665'
+2026-06-23 09:02:13.172 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id=?
+2026-06-23 09:02:13.193 [http-nio-8080-exec-8] INFO  com.pms.service.ProjectService - Project updated successfully | projectId=2 name='Momentum Appgfhgf655665'
+2026-06-23 09:02:13.238 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    update
+        projects 
+    set
+        created_at=?,
+        created_by=?,
+        description=?,
+        end_date=?,
+        name=?,
+        progress_percent=?,
+        start_date=?,
+        status=? 
+    where
+        id=?
+2026-06-23 09:02:13.253 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:02:13.257 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:02:13.280 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:02:13.287 [http-nio-8080-exec-10] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=admin@pms.com
+2026-06-23 09:02:13.290 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:02:13.293 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    order by
+        p1_0.created_at desc
+2026-06-23 09:02:13.296 [http-nio-8080-exec-10] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=admin@pms.com role=ROLE_ADMIN count=2
+2026-06-23 09:02:13.298 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:02:13.302 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:02:13.305 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:02:13.307 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:03:05.441 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:03:05.452 [http-nio-8080-exec-3] INFO  c.pms.controller.ProjectController - POST /api/projects | name='Poerjfhfjk 344535435' requestedBy=admin@pms.com
+2026-06-23 09:03:05.454 [http-nio-8080-exec-3] INFO  com.pms.service.ProjectService - Project creation initiated | name='Poerjfhfjk 344535435' createdBy=admin@pms.com
+2026-06-23 09:03:05.456 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:03:05.476 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        projects
+        (created_at, created_by, description, end_date, name, progress_percent, start_date, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2026-06-23 09:03:05.489 [http-nio-8080-exec-3] INFO  com.pms.service.ProjectService - Project created successfully | projectId=3 name='Poerjfhfjk 344535435' createdBy=admin@pms.com
+2026-06-23 09:03:05.505 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:03:05.511 [http-nio-8080-exec-2] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=admin@pms.com
+2026-06-23 09:03:05.515 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:03:05.519 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    order by
+        p1_0.created_at desc
+2026-06-23 09:03:05.521 [http-nio-8080-exec-2] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=admin@pms.com role=ROLE_ADMIN count=3
+2026-06-23 09:03:05.523 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:03:05.527 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:03:05.531 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:03:05.536 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:03:05.539 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:03:05.543 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:07:08.727 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:07:08.727 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:07:08.733 [http-nio-8080-exec-10] INFO  com.pms.controller.TaskController - GET /api/tasks/project/2 | requestedBy=admin@pms.com
+2026-06-23 09:07:08.733 [http-nio-8080-exec-5] INFO  c.pms.controller.ProjectController - GET /api/projects/2 | requestedBy=admin@pms.com
+2026-06-23 09:07:08.735 [http-nio-8080-exec-10] DEBUG com.pms.service.TaskService - Fetching tasks | projectId=2
+2026-06-23 09:07:08.735 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        p1_0.id=? 
+    order by
+        t1_0.created_at desc
+2026-06-23 09:07:08.735 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id=?
+2026-06-23 09:07:08.738 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 09:07:08.740 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:07:08.740 [http-nio-8080-exec-10] INFO  com.pms.service.TaskService - Tasks fetched for project | projectId=2 count=1
+2026-06-23 09:07:08.743 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:07:57.321 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:07:57.326 [http-nio-8080-exec-1] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=admin@pms.com
+2026-06-23 09:07:57.330 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:07:57.332 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    order by
+        p1_0.created_at desc
+2026-06-23 09:07:57.336 [http-nio-8080-exec-1] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=admin@pms.com role=ROLE_ADMIN count=3
+2026-06-23 09:07:57.338 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:07:57.341 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:07:57.343 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:07:57.344 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:07:57.346 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:07:57.348 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:08:15.272 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:08:15.279 [http-nio-8080-exec-2] INFO  c.pms.controller.ProjectController - POST /api/projects | name='jyftfttf766666576' requestedBy=admin@pms.com
+2026-06-23 09:08:15.282 [http-nio-8080-exec-2] INFO  com.pms.service.ProjectService - Project creation initiated | name='jyftfttf766666576' createdBy=admin@pms.com
+2026-06-23 09:08:15.285 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:08:15.289 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        projects
+        (created_at, created_by, description, end_date, name, progress_percent, start_date, status) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?)
+2026-06-23 09:08:15.294 [http-nio-8080-exec-2] INFO  com.pms.service.ProjectService - Project created successfully | projectId=4 name='jyftfttf766666576' createdBy=admin@pms.com
+2026-06-23 09:08:15.311 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:08:15.317 [http-nio-8080-exec-6] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=admin@pms.com
+2026-06-23 09:08:15.320 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:08:15.323 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    order by
+        p1_0.created_at desc
+2026-06-23 09:08:15.326 [http-nio-8080-exec-6] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=admin@pms.com role=ROLE_ADMIN count=4
+2026-06-23 09:08:15.328 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:08:15.331 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:08:15.334 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:08:15.339 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:08:15.342 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:08:15.344 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:08:15.346 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:08:15.348 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:10:23.688 [http-nio-8080-exec-10] INFO  com.pms.controller.AuthController - POST /api/auth/login | email=admin@pms.com
+2026-06-23 09:10:23.689 [http-nio-8080-exec-10] INFO  com.pms.service.AuthService - Login attempt | email=admin@pms.com
+2026-06-23 09:10:23.691 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:10:23.793 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:10:23.795 [http-nio-8080-exec-10] INFO  com.pms.service.AuthService - Login successful | userId=2 email=admin@pms.com role=ROLE_ADMIN
+2026-06-23 09:10:23.796 [http-nio-8080-exec-10] INFO  com.pms.controller.AuthController - Login response sent | email=admin@pms.com role=ROLE_ADMIN
+2026-06-23 09:10:23.815 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:10:23.820 [http-nio-8080-exec-9] INFO  c.pms.controller.DashboardController - GET /api/dashboard | requestedBy=admin@pms.com
+2026-06-23 09:10:23.824 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:10:23.826 [http-nio-8080-exec-9] INFO  com.pms.service.DashboardService - Dashboard requested | userEmail=admin@pms.com role=ROLE_ADMIN
+2026-06-23 09:10:23.828 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    CALL sp_get_dashboard_summary()
+2026-06-23 09:10:23.829 [http-nio-8080-exec-9] DEBUG c.p.r.StoredProcedureService - Stored procedure executed | sp_get_dashboard_summary | result={completedTasks=1, activeProjects=1, overdueTasks=0, totalTasks=3, totalProjects=4, completedProjects=0}
+2026-06-23 09:10:23.832 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 09:10:23.836 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 09:10:23.839 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 09:10:23.841 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    order by
+        t1_0.created_at desc
+2026-06-23 09:10:23.846 [http-nio-8080-exec-9] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 09:10:23.849 [http-nio-8080-exec-9] INFO  com.pms.service.DashboardService - Admin dashboard built | totalProjects=4 totalTasks=3 overdueTasks=0
+2026-06-23 09:10:26.170 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:10:26.175 [http-nio-8080-exec-4] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=admin@pms.com
+2026-06-23 09:10:26.178 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:10:26.180 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    order by
+        p1_0.created_at desc
+2026-06-23 09:10:26.185 [http-nio-8080-exec-4] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=admin@pms.com role=ROLE_ADMIN count=4
+2026-06-23 09:10:26.187 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:10:26.190 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:10:26.194 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:10:26.197 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:10:26.202 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:10:26.205 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:10:26.208 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:10:26.212 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:12:55.583 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:12:55.583 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:12:55.589 [http-nio-8080-exec-7] INFO  c.pms.controller.ProjectController - GET /api/projects/1 | requestedBy=admin@pms.com
+2026-06-23 09:12:55.589 [http-nio-8080-exec-8] INFO  com.pms.controller.TaskController - GET /api/tasks/project/1 | requestedBy=admin@pms.com
+2026-06-23 09:12:55.590 [http-nio-8080-exec-8] DEBUG com.pms.service.TaskService - Fetching tasks | projectId=1
+2026-06-23 09:12:55.591 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id=?
+2026-06-23 09:12:55.591 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        p1_0.id=? 
+    order by
+        t1_0.created_at desc
+2026-06-23 09:12:55.594 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 09:12:55.595 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:12:55.596 [http-nio-8080-exec-8] INFO  com.pms.service.TaskService - Tasks fetched for project | projectId=1 count=2
+2026-06-23 09:12:55.598 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:13:35.950 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:13:35.957 [http-nio-8080-exec-5] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=admin@pms.com
+2026-06-23 09:13:35.961 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:13:35.965 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    order by
+        p1_0.created_at desc
+2026-06-23 09:13:35.967 [http-nio-8080-exec-5] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=admin@pms.com role=ROLE_ADMIN count=4
+2026-06-23 09:13:35.970 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:13:35.973 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:13:35.976 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:13:35.980 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:13:35.984 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:13:35.987 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:13:35.990 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:13:35.992 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:13:53.932 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:13:53.932 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:13:53.939 [http-nio-8080-exec-4] INFO  com.pms.controller.TaskController - GET /api/tasks/project/4 | requestedBy=admin@pms.com
+2026-06-23 09:13:53.940 [http-nio-8080-exec-3] INFO  c.pms.controller.ProjectController - GET /api/projects/4 | requestedBy=admin@pms.com
+2026-06-23 09:13:53.941 [http-nio-8080-exec-4] DEBUG com.pms.service.TaskService - Fetching tasks | projectId=4
+2026-06-23 09:13:53.942 [http-nio-8080-exec-4] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        p1_0.id=? 
+    order by
+        t1_0.created_at desc
+2026-06-23 09:13:53.942 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id=?
+2026-06-23 09:13:53.943 [http-nio-8080-exec-4] INFO  com.pms.service.TaskService - Tasks fetched for project | projectId=4 count=0
+2026-06-23 09:13:53.945 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:13:53.949 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:14:08.489 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:14:08.489 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:14:08.495 [http-nio-8080-exec-7] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=admin@pms.com
+2026-06-23 09:14:08.496 [http-nio-8080-exec-8] INFO  com.pms.controller.TaskController - GET /api/tasks | status=null priority=null projectId=null overdue=null page=0 requestedBy=admin@pms.com
+2026-06-23 09:14:08.498 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:14:08.498 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:14:08.501 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    order by
+        p1_0.created_at desc
+2026-06-23 09:14:08.504 [http-nio-8080-exec-7] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=admin@pms.com role=ROLE_ADMIN count=4
+2026-06-23 09:14:08.507 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:14:08.511 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        (
+            ? is null 
+            or t1_0.status=?
+        ) 
+        and (
+            ? is null 
+            or t1_0.priority=?
+        ) 
+        and (
+            ? is null 
+            or p1_0.id=?
+        ) 
+        and (
+            ? is null 
+            or at1_0.id=?
+        ) 
+        and (
+            ? is null 
+            or lower(t1_0.title) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or ?=0 
+            or (
+                t1_0.due_date is not null 
+                and t1_0.due_date<? 
+                and t1_0.status<>'DONE'
+            )
+        ) 
+    order by
+        t1_0.created_at desc 
+    limit
+        ?
+2026-06-23 09:14:08.511 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:14:08.515 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:14:08.515 [http-nio-8080-exec-8] INFO  com.pms.service.TaskService - Task search | userEmail=admin@pms.com role=ROLE_ADMIN status=null priority=null projectId=null overdue=null page=0 totalResults=3
+2026-06-23 09:14:08.515 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 09:14:08.518 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:14:08.522 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:14:08.527 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:14:08.531 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:14:08.536 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:14:10.750 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:14:10.754 [http-nio-8080-exec-5] INFO  c.pms.controller.DashboardController - GET /api/dashboard | requestedBy=admin@pms.com
+2026-06-23 09:14:10.757 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:14:10.760 [http-nio-8080-exec-5] INFO  com.pms.service.DashboardService - Dashboard requested | userEmail=admin@pms.com role=ROLE_ADMIN
+2026-06-23 09:14:10.760 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    CALL sp_get_dashboard_summary()
+2026-06-23 09:14:10.763 [http-nio-8080-exec-5] DEBUG c.p.r.StoredProcedureService - Stored procedure executed | sp_get_dashboard_summary | result={completedTasks=1, activeProjects=1, overdueTasks=0, totalTasks=3, totalProjects=4, completedProjects=0}
+2026-06-23 09:14:10.765 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 09:14:10.768 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 09:14:10.771 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    where
+        t1_0.status=?
+2026-06-23 09:14:10.772 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    order by
+        t1_0.created_at desc
+2026-06-23 09:14:10.776 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 09:14:10.778 [http-nio-8080-exec-5] INFO  com.pms.service.DashboardService - Admin dashboard built | totalProjects=4 totalTasks=3 overdueTasks=0
+2026-06-23 09:14:13.213 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:14:13.219 [http-nio-8080-exec-1] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=admin@pms.com
+2026-06-23 09:14:13.222 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:14:13.224 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    order by
+        p1_0.created_at desc
+2026-06-23 09:14:13.227 [http-nio-8080-exec-1] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=admin@pms.com role=ROLE_ADMIN count=4
+2026-06-23 09:14:13.229 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:14:13.232 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:14:13.236 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:14:13.238 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:14:13.241 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:14:13.244 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:14:13.248 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:14:13.252 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:14:19.314 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:14:19.314 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:14:19.319 [http-nio-8080-exec-6] INFO  c.pms.controller.ProjectController - GET /api/projects/4 | requestedBy=admin@pms.com
+2026-06-23 09:14:19.319 [http-nio-8080-exec-3] INFO  com.pms.controller.TaskController - GET /api/tasks/project/4 | requestedBy=admin@pms.com
+2026-06-23 09:14:19.320 [http-nio-8080-exec-3] DEBUG com.pms.service.TaskService - Fetching tasks | projectId=4
+2026-06-23 09:14:19.321 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        p1_0.id=? 
+    order by
+        t1_0.created_at desc
+2026-06-23 09:14:19.321 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id=?
+2026-06-23 09:14:19.322 [http-nio-8080-exec-3] INFO  com.pms.service.TaskService - Tasks fetched for project | projectId=4 count=0
+2026-06-23 09:14:19.325 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:14:19.329 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:14:21.965 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:14:21.971 [http-nio-8080-exec-8] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=admin@pms.com
+2026-06-23 09:14:21.974 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:14:21.977 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    order by
+        p1_0.created_at desc
+2026-06-23 09:14:21.980 [http-nio-8080-exec-8] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=admin@pms.com role=ROLE_ADMIN count=4
+2026-06-23 09:14:21.982 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:14:21.985 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:14:21.988 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:14:21.992 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:14:21.995 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:14:21.998 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:14:22.001 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:14:22.004 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:14:25.777 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:14:25.777 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:14:25.781 [http-nio-8080-exec-1] INFO  com.pms.controller.TaskController - GET /api/tasks/project/1 | requestedBy=admin@pms.com
+2026-06-23 09:14:25.781 [http-nio-8080-exec-5] INFO  c.pms.controller.ProjectController - GET /api/projects/1 | requestedBy=admin@pms.com
+2026-06-23 09:14:25.783 [http-nio-8080-exec-1] DEBUG com.pms.service.TaskService - Fetching tasks | projectId=1
+2026-06-23 09:14:25.783 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        p1_0.id=? 
+    order by
+        t1_0.created_at desc
+2026-06-23 09:14:25.783 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id=?
+2026-06-23 09:14:25.786 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 09:14:25.787 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:14:25.787 [http-nio-8080-exec-1] INFO  com.pms.service.TaskService - Tasks fetched for project | projectId=1 count=2
+2026-06-23 09:14:25.790 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:21:08.049 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:21:08.049 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:21:08.056 [http-nio-8080-exec-8] INFO  com.pms.controller.TaskController - GET /api/tasks/project/1 | requestedBy=admin@pms.com
+2026-06-23 09:21:08.056 [http-nio-8080-exec-2] INFO  c.pms.controller.ProjectController - GET /api/projects/1 | requestedBy=admin@pms.com
+2026-06-23 09:21:08.057 [http-nio-8080-exec-8] DEBUG com.pms.service.TaskService - Fetching tasks | projectId=1
+2026-06-23 09:21:08.058 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id=?
+2026-06-23 09:21:08.058 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        p1_0.id=? 
+    order by
+        t1_0.created_at desc
+2026-06-23 09:21:08.062 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 09:21:08.063 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:21:08.063 [http-nio-8080-exec-8] INFO  com.pms.service.TaskService - Tasks fetched for project | projectId=1 count=2
+2026-06-23 09:21:08.066 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:21:08.714 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:21:08.714 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:21:08.718 [http-nio-8080-exec-5] INFO  com.pms.controller.TaskController - GET /api/tasks | status=null priority=null projectId=null overdue=null page=0 requestedBy=laxmi@gmail.com
+2026-06-23 09:21:08.718 [http-nio-8080-exec-1] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=laxmi@gmail.com
+2026-06-23 09:21:08.721 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:21:08.721 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:21:08.723 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        distinct p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id in (select
+            t1_0.project_id 
+        from
+            tasks t1_0 
+        where
+            t1_0.assigned_to=?) 
+    order by
+        p1_0.created_at desc
+2026-06-23 09:21:08.723 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+        and (
+            ? is null 
+            or t1_0.status=?
+        ) 
+        and (
+            ? is null 
+            or t1_0.priority=?
+        ) 
+        and (
+            ? is null 
+            or p1_0.id=?
+        ) 
+        and (
+            ? is null 
+            or lower(t1_0.title) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or ?=0 
+            or (
+                t1_0.due_date is not null 
+                and t1_0.due_date<? 
+                and t1_0.status<>'DONE'
+            )
+        ) 
+    order by
+        t1_0.created_at desc 
+    limit
+        ?
+2026-06-23 09:21:08.725 [http-nio-8080-exec-1] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=laxmi@gmail.com role=ROLE_MEMBER count=1
+2026-06-23 09:21:08.725 [http-nio-8080-exec-5] INFO  com.pms.service.TaskService - Task search | userEmail=laxmi@gmail.com role=ROLE_MEMBER status=null priority=null projectId=null overdue=null page=0 totalResults=1
+2026-06-23 09:21:08.725 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 09:21:08.727 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:21:08.730 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:21:52.680 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:21:52.680 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:21:52.684 [http-nio-8080-exec-3] INFO  com.pms.controller.TaskController - GET /api/tasks/project/1 | requestedBy=admin@pms.com
+2026-06-23 09:21:52.684 [http-nio-8080-exec-6] INFO  c.pms.controller.ProjectController - GET /api/projects/1 | requestedBy=admin@pms.com
+2026-06-23 09:21:52.686 [http-nio-8080-exec-3] DEBUG com.pms.service.TaskService - Fetching tasks | projectId=1
+2026-06-23 09:21:52.688 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        p1_0.id=? 
+    order by
+        t1_0.created_at desc
+2026-06-23 09:21:52.688 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id=?
+2026-06-23 09:21:52.690 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 09:21:52.691 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:21:52.693 [http-nio-8080-exec-3] INFO  com.pms.service.TaskService - Tasks fetched for project | projectId=1 count=2
+2026-06-23 09:21:52.695 [http-nio-8080-exec-6] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?
+2026-06-23 09:21:53.221 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:21:53.221 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:21:53.225 [http-nio-8080-exec-7] INFO  c.pms.controller.ProjectController - GET /api/projects | requestedBy=laxmi@gmail.com
+2026-06-23 09:21:53.226 [http-nio-8080-exec-10] INFO  com.pms.controller.TaskController - GET /api/tasks | status=null priority=null projectId=null overdue=null page=0 requestedBy=laxmi@gmail.com
+2026-06-23 09:21:53.228 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:21:53.228 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2026-06-23 09:21:53.231 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        distinct p1_0.id,
+        p1_0.created_at,
+        cb1_0.id,
+        cb1_0.created_at,
+        cb1_0.email,
+        cb1_0.password,
+        cb1_0.role,
+        cb1_0.username,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status 
+    from
+        projects p1_0 
+    left join
+        users cb1_0 
+            on cb1_0.id=p1_0.created_by 
+    where
+        p1_0.id in (select
+            t1_0.project_id 
+        from
+            tasks t1_0 
+        where
+            t1_0.assigned_to=?) 
+    order by
+        p1_0.created_at desc
+2026-06-23 09:21:53.231 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        t1_0.id,
+        at1_0.id,
+        at1_0.created_at,
+        at1_0.email,
+        at1_0.password,
+        at1_0.role,
+        at1_0.username,
+        t1_0.created_at,
+        t1_0.created_by,
+        t1_0.description,
+        t1_0.due_date,
+        t1_0.priority,
+        t1_0.project_id,
+        p1_0.id,
+        p1_0.created_at,
+        p1_0.created_by,
+        p1_0.description,
+        p1_0.end_date,
+        p1_0.name,
+        p1_0.progress_percent,
+        p1_0.start_date,
+        p1_0.status,
+        t1_0.status,
+        t1_0.title,
+        t1_0.updated_at 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    left join
+        users at1_0 
+            on at1_0.id=t1_0.assigned_to 
+    where
+        at1_0.id=? 
+        and (
+            ? is null 
+            or t1_0.status=?
+        ) 
+        and (
+            ? is null 
+            or t1_0.priority=?
+        ) 
+        and (
+            ? is null 
+            or p1_0.id=?
+        ) 
+        and (
+            ? is null 
+            or lower(t1_0.title) like replace(lower(concat('%', ?, '%')), '\\', '\\\\')
+        ) 
+        and (
+            ? is null 
+            or ?=0 
+            or (
+                t1_0.due_date is not null 
+                and t1_0.due_date<? 
+                and t1_0.status<>'DONE'
+            )
+        ) 
+    order by
+        t1_0.created_at desc 
+    limit
+        ?
+2026-06-23 09:21:53.233 [http-nio-8080-exec-10] INFO  com.pms.service.TaskService - Task search | userEmail=laxmi@gmail.com role=ROLE_MEMBER status=null priority=null projectId=null overdue=null page=0 totalResults=1
+2026-06-23 09:21:53.233 [http-nio-8080-exec-7] INFO  com.pms.service.ProjectService - Projects fetched | userEmail=laxmi@gmail.com role=ROLE_MEMBER count=1
+2026-06-23 09:21:53.233 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id,
+        u1_0.created_at,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.id=?
+2026-06-23 09:21:53.236 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=?
+2026-06-23 09:21:53.240 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(t1_0.id) 
+    from
+        tasks t1_0 
+    left join
+        projects p1_0 
+            on p1_0.id=t1_0.project_id 
+    where
+        p1_0.id=? 
+        and t1_0.status=?

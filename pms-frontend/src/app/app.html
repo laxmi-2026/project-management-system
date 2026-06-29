@@ -1,0 +1,6 @@
+<div class="pms-shell" [class.pms-shell-auth]="isAuthPage">
+  <app-sidebar *ngIf="!isAuthPage"></app-sidebar>
+  <div class="pms-main" [class.pms-main-full]="isAuthPage">
+    <router-outlet></router-outlet>
+  </div>
+</div>

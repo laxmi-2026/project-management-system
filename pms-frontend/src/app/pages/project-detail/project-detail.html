@@ -1,0 +1,273 @@
+<div class="pms-topbar">
+  <button class="btn btn-sm" style="border: 1px solid var(--pms-slate-300); border-radius: var(--pms-radius); font-size: 0.82rem;"
+          (click)="goBack()">
+    <i class="bi bi-arrow-left me-1"></i> Back to Projects
+  </button>
+  <a [routerLink]="['/projects', projectId, 'board']" class="pms-btn-primary" style="text-decoration: none;" *ngIf="project">
+    <i class="bi bi-kanban me-1"></i> Open Kanban Board
+  </a>
+</div>
+
+<div class="pms-content" *ngIf="project">
+
+  <div class="mb-4">
+    <h4 class="fw-bold mb-1">{{ project.name }}</h4>
+    <p class="text-muted mb-0" *ngIf="project.description">{{ project.description }}</p>
+  </div>
+
+  <!-- Project summary -->
+  <div class="pms-card mb-4 p-4">
+    <div class="row g-3">
+      <div class="col-md-3">
+        <small class="text-muted d-block">Status</small>
+        <span class="pms-badge-v2 mt-1"
+              [class.active]="project.status === 'ACTIVE'"
+              [class.completed]="project.status === 'COMPLETED'"
+              [class.onhold]="project.status === 'ON_HOLD'"
+              [class.planning]="project.status === 'PLANNING'">
+          {{ project.status }}
+        </span>
+      </div>
+      <div class="col-md-3">
+        <small class="text-muted d-block">Start Date</small>
+        <span class="fw-semibold" style="font-size: 0.86rem;">{{ project.startDate || '—' }}</span>
+      </div>
+      <div class="col-md-3">
+        <small class="text-muted d-block">End Date</small>
+        <span class="fw-semibold" style="font-size: 0.86rem;">{{ project.endDate || '—' }}</span>
+      </div>
+      <div class="col-md-3">
+        <small class="text-muted d-block">Created By</small>
+        <span class="fw-semibold" style="font-size: 0.86rem;">{{ project.createdByUsername || '—' }}</span>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <div class="d-flex justify-content-between mb-1">
+        <small class="text-muted">Progress</small>
+        <small class="fw-semibold">{{ project.progressPercent }}% ({{ project.completedTasks }}/{{ project.totalTasks }} tasks)</small>
+      </div>
+      <div class="progress" style="height: 8px; border-radius: 4px; background: var(--pms-slate-100);">
+        <div class="progress-bar" style="background: var(--pms-success);" [style.width.%]="project.progressPercent"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Task creation/edit form -->
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h6 class="fw-bold mb-0">Tasks</h6>
+    <button class="pms-btn-primary" *ngIf="auth.canManage()" (click)="openCreateForm()">
+      <i class="bi bi-plus-lg"></i> New Task
+    </button>
+  </div>
+
+  <div class="pms-modal-backdrop" *ngIf="showForm" (click)="closeForm()">
+  <div class="pms-task-form-card" style="width: 100%; max-width: 640px; margin: 16px;" (click)="$event.stopPropagation()">
+    <div class="pms-task-form-header">
+      <button class="pms-modal-close" (click)="closeForm()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <div class="pms-task-form-icon">
+        <i class="bi" [class.bi-plus-circle-fill]="!editingTaskId" [class.bi-pencil-fill]="editingTaskId"></i>
+      </div>
+      <div>
+        <div class="pms-task-form-eyebrow">{{ editingTaskId ? 'Editing Task' : 'New Task' }}</div>
+        <div class="pms-task-form-title">{{ editingTaskId ? 'Update task details' : 'Add a task to this project' }}</div>
+      </div>
+    </div>
+
+    <div class="pms-task-form-body">
+      <div class="alert alert-danger" style="font-size: 0.85rem;" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+        <div class="row g-3">
+
+          <div class="col-12">
+            <label class="form-label fw-semibold small">Task Title <span class="text-danger">*</span></label>
+            <input type="text" formControlName="title" class="form-control" maxlength="150"
+                   [class.is-invalid]="title.invalid && title.touched"
+                   placeholder="e.g. Design homepage" style="border-radius: var(--pms-radius);">
+            <div class="invalid-feedback" *ngIf="title.invalid && title.touched">
+              <span *ngIf="title.errors?.['required']">Task title is required</span>
+              <span *ngIf="title.errors?.['maxlength']">Must be under 150 characters</span>
+              <span *ngIf="title.errors?.['pattern']">Only letters, spaces, hyphens, and apostrophes allowed — no numbers</span>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label fw-semibold small">Priority</label>
+            <select formControlName="priority" class="form-select" style="border-radius: var(--pms-radius);">
+              <option value="LOW">Low</option>
+              <option value="MEDIUM">Medium</option>
+              <option value="HIGH">High</option>
+            </select>
+          </div>
+
+          <div class="col-md-4" [class.col-md-8]="!editingTaskId">
+            <label class="form-label fw-semibold small">Due Date</label>
+            <input type="date" formControlName="dueDate" [min]="todayDateString" class="form-control"
+                   [class.is-invalid]="dueDate.invalid && dueDate.touched"
+                   style="border-radius: var(--pms-radius);">
+            <div class="invalid-feedback" *ngIf="dueDate.invalid && dueDate.touched">
+              <span *ngIf="dueDate.errors?.['pastDate']">Due date cannot be in the past</span>
+            </div>
+          </div>
+
+          <div class="col-md-4" *ngIf="editingTaskId">
+            <label class="form-label fw-semibold small">Status</label>
+            <select formControlName="status" class="form-select" style="border-radius: var(--pms-radius);">
+              <option value="TODO">To Do</option>
+              <option value="IN_PROGRESS">In Progress</option>
+              <option value="DONE">Done</option>
+            </select>
+          </div>
+
+          <div class="col-12">
+            <label class="form-label fw-semibold small">
+              Description <span class="text-muted" style="font-weight: 400; font-size: 0.78rem;">(optional)</span>
+            </label>
+            <textarea formControlName="description" rows="2" maxlength="2000" class="form-control"
+                      placeholder="Task details..." style="border-radius: var(--pms-radius);"></textarea>
+            <div class="text-end mt-1">
+              <small class="text-muted" style="font-size: 0.72rem;">
+                {{ form.get('description')?.value?.length || 0 }}/2000
+              </small>
+            </div>
+          </div>
+
+          <div class="col-12 d-flex gap-2 pt-2" style="border-top: 1px solid var(--pms-slate-100);">
+            <button type="submit" class="pms-btn-primary" [disabled]="form.invalid || submitting" style="border: none;">
+              <span class="spinner-border spinner-border-sm me-2" *ngIf="submitting"></span>
+              {{ submitting ? 'Saving...' : (editingTaskId ? 'Update Task' : 'Save Task') }}
+            </button>
+            <button type="button" class="btn btn-sm" style="border: 1px solid var(--pms-slate-300); border-radius: var(--pms-radius);"
+                    (click)="closeForm()">
+              Cancel
+            </button>
+          </div>
+
+        </div>
+      </form>
+    </div>
+  </div>
+  </div>
+
+  <!-- Task table -->
+  <div class="text-center py-5" *ngIf="loading">
+    <div class="spinner-border" style="color: var(--pms-indigo-600);"></div>
+  </div>
+
+  <div class="pms-card" *ngIf="!loading">
+    <div class="table-responsive">
+      <table class="table table-hover mb-0 align-middle" style="font-size: 0.85rem;">
+        <thead>
+          <tr style="background: var(--pms-slate-50);">
+            <th class="ps-3">Title</th>
+            <th>Priority</th>
+            <th>Status</th>
+            <th>Due Date</th>
+            <th>Assigned To</th>
+            <th class="text-center pe-3">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let task of tasks">
+            <td class="ps-3 fw-semibold">{{ task.title }}</td>
+            <td><span class="pms-badge-v2" [ngClass]="priorityBadgeClass(task.priority)">{{ task.priority }}</span></td>
+            <td><span class="pms-badge-v2" [ngClass]="statusBadgeClass(task.status)">{{ task.status }}</span></td>
+            <td>
+              <span [class.text-danger]="task.overdue" [class.fw-semibold]="task.overdue">
+                {{ task.dueDate || '—' }} <i class="bi bi-exclamation-triangle-fill" *ngIf="task.overdue"></i>
+              </span>
+            </td>
+            <td>{{ task.assignedToUsername || 'Unassigned' }}</td>
+            <td class="text-center pe-3">
+              <div class="d-flex gap-1 justify-content-center">
+                <button class="pms-action-icon-v2 view" title="View details" (click)="openViewModal(task)">
+                  <i class="bi bi-eye-fill"></i>
+                </button>
+                <button class="pms-action-icon-v2 edit" title="Edit task" *ngIf="auth.canManage()" (click)="openEditForm(task)">
+                  <i class="bi bi-pencil-fill"></i>
+                </button>
+                <button class="pms-action-icon-v2 delete" title="Delete task" *ngIf="auth.canManage()" (click)="deleteTask(task)">
+                  <i class="bi bi-trash-fill"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="tasks.length === 0">
+            <td colspan="6" class="text-center py-5 text-muted">No tasks yet for this project.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="pb-4"></div>
+</div>
+
+<!-- View Task Modal v2 — gradient header, icon-grid detail layout -->
+<div *ngIf="viewingTask" class="pms-modal-backdrop" (click)="closeViewModal()">
+  <div class="pms-modal-v2" (click)="$event.stopPropagation()">
+
+    <div class="pms-modal-header-v2">
+      <button class="pms-modal-close" (click)="closeViewModal()">
+        <i class="bi bi-x-lg"></i>
+      </button>
+      <div class="pms-modal-eyebrow">{{ viewingTask.projectName }}</div>
+      <h5 class="pms-modal-title">{{ viewingTask.title }}</h5>
+      <div class="d-flex gap-2 mt-2">
+        <span class="pms-badge-v2" [ngClass]="priorityBadgeClass(viewingTask.priority)" style="background: rgba(255,255,255,0.2); color: #fff;">
+          {{ viewingTask.priority }}
+        </span>
+        <span class="pms-badge-v2" [ngClass]="statusBadgeClass(viewingTask.status)" style="background: rgba(255,255,255,0.2); color: #fff;">
+          {{ viewingTask.status }}
+        </span>
+      </div>
+    </div>
+
+    <div class="pms-modal-body-v2">
+      <p class="pms-modal-description" *ngIf="viewingTask.description">{{ viewingTask.description }}</p>
+      <p class="pms-modal-description" *ngIf="!viewingTask.description" style="font-style: italic; color: var(--pms-slate-500);">
+        No description provided for this task.
+      </p>
+
+      <div class="pms-modal-detail-grid">
+        <div class="pms-modal-detail-item">
+          <div class="pms-modal-detail-icon"><i class="bi bi-calendar-event"></i></div>
+          <div>
+            <div class="pms-modal-detail-label">Due Date</div>
+            <div class="pms-modal-detail-value" [class.text-danger]="viewingTask.overdue">
+              {{ viewingTask.dueDate || '—' }}
+              <i class="bi bi-exclamation-triangle-fill ms-1" *ngIf="viewingTask.overdue"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="pms-modal-detail-item">
+          <div class="pms-modal-detail-icon"><i class="bi bi-person-fill"></i></div>
+          <div>
+            <div class="pms-modal-detail-label">Assigned To</div>
+            <div class="pms-modal-detail-value">{{ viewingTask.assignedToUsername || 'Unassigned' }}</div>
+          </div>
+        </div>
+
+        <div class="pms-modal-detail-item">
+          <div class="pms-modal-detail-icon"><i class="bi bi-person-badge"></i></div>
+          <div>
+            <div class="pms-modal-detail-label">Created By</div>
+            <div class="pms-modal-detail-value">{{ viewingTask.createdByUsername || '—' }}</div>
+          </div>
+        </div>
+
+        <div class="pms-modal-detail-item">
+          <div class="pms-modal-detail-icon"><i class="bi bi-folder2"></i></div>
+          <div>
+            <div class="pms-modal-detail-label">Project</div>
+            <div class="pms-modal-detail-value">{{ viewingTask.projectName }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

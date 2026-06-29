@@ -1,0 +1,139 @@
+<div class="min-vh-100 d-flex align-items-center justify-content-center py-4 pms-auth-bg">
+  <div class="bg-white" style="width: 100%; max-width: 460px; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.25);">
+
+    <div class="text-center pt-5 pb-3 px-4">
+      <div style="font-size: 2.5rem;">📊</div>
+      <h4 class="fw-bold mt-2 mb-1" style="color: var(--pms-slate-900);">Create Account</h4>
+      <p class="text-muted mb-0" style="font-size: 0.88rem;">Join the Project Management System</p>
+    </div>
+
+    <div class="px-4 pb-4" style="text-align: left;">
+      <div class="alert alert-danger" style="font-size: 0.85rem;" *ngIf="errorMessage">{{ errorMessage }}</div>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold" style="font-size: 0.85rem;">Username <span class="text-danger">*</span></label>
+          <input type="text" formControlName="username" placeholder="e.g. johnsmith"
+                 class="form-control"
+                 [class.is-invalid]="username.invalid && username.touched"
+                 [class.is-valid]="username.valid && username.touched"
+                 style="border-radius: var(--pms-radius); padding: 10px 12px;">
+          <div class="invalid-feedback" *ngIf="username.invalid && username.touched">
+            <span *ngIf="username.errors?.['required']">Username is required</span>
+            <span *ngIf="username.errors?.['minlength']">Minimum 3 characters required</span>
+            <span *ngIf="username.errors?.['pattern']">Only letters, numbers and underscores allowed</span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold" style="font-size: 0.85rem;">Email Address <span class="text-danger">*</span></label>
+          <input type="email" formControlName="email" placeholder="you@example.com"
+                 class="form-control"
+                 [class.is-invalid]="email.invalid && email.touched"
+                 [class.is-valid]="email.valid && email.touched"
+                 style="border-radius: var(--pms-radius); padding: 10px 12px;">
+          <div class="invalid-feedback" *ngIf="email.invalid && email.touched">
+            <span *ngIf="email.errors?.['required']">Email is required</span>
+            <span *ngIf="email.errors?.['email']">Enter a valid email address</span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold" style="font-size: 0.85rem;">Password <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <input [type]="showPassword ? 'text' : 'password'" formControlName="password"
+                   placeholder="Minimum 8 characters"
+                   class="form-control"
+                   [class.is-invalid]="password.invalid && password.touched"
+                   style="border-radius: var(--pms-radius) 0 0 var(--pms-radius); padding: 10px 12px;">
+            <button type="button" class="btn" style="border: 1px solid var(--pms-slate-300); border-radius: 0 var(--pms-radius) var(--pms-radius) 0;"
+                    (click)="togglePassword()">
+              <i class="bi" [class.bi-eye]="!showPassword" [class.bi-eye-slash]="showPassword"></i>
+            </button>
+          </div>
+
+          <div class="mt-2" *ngIf="password.value">
+            <div class="d-flex gap-1 mb-1">
+              <div *ngFor="let i of [1,2,3]" style="height: 4px; flex: 1; border-radius: 4px;"
+                   [style.background]="i <= passwordStrength.level ? passwordStrength.color : 'var(--pms-slate-300)'">
+              </div>
+            </div>
+            <small [style.color]="passwordStrength.color" class="fw-semibold">{{ passwordStrength.label }} password</small>
+          </div>
+          <div class="text-danger mt-1" style="font-size: 0.8rem;" *ngIf="password.invalid && password.touched">
+            <span *ngIf="password.errors?.['required']">Password is required</span>
+            <span *ngIf="password.errors?.['minlength']">Minimum 8 characters required</span>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label fw-semibold" style="font-size: 0.85rem;">Confirm Password <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <input [type]="showConfirm ? 'text' : 'password'" formControlName="confirmPassword"
+                   placeholder="Re-enter your password"
+                   class="form-control"
+                   [class.is-invalid]="confirmPassword.invalid && confirmPassword.touched"
+                   style="border-radius: var(--pms-radius) 0 0 var(--pms-radius); padding: 10px 12px;">
+            <button type="button" class="btn" style="border: 1px solid var(--pms-slate-300); border-radius: 0 var(--pms-radius) var(--pms-radius) 0;"
+                    (click)="toggleConfirm()">
+              <i class="bi" [class.bi-eye]="!showConfirm" [class.bi-eye-slash]="showConfirm"></i>
+            </button>
+          </div>
+          <div class="text-danger mt-1" style="font-size: 0.8rem;" *ngIf="confirmPassword.invalid && confirmPassword.touched">
+            <span *ngIf="confirmPassword.errors?.['required']">Please confirm your password</span>
+            <span *ngIf="confirmPassword.errors?.['mismatch']">Passwords do not match</span>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label class="form-label fw-semibold" style="font-size: 0.85rem;">Account Type</label>
+          <div class="row g-2">
+            <div class="col-4">
+              <div class="p-3 text-center cursor-pointer" style="border-radius: var(--pms-radius); transition: all 0.15s;"
+                   [style.border]="selectedRole === '' ? '2px solid var(--pms-indigo-600)' : '1px solid var(--pms-slate-300)'"
+                   [style.background]="selectedRole === '' ? 'var(--pms-indigo-50)' : '#fff'"
+                   (click)="selectRole('')">
+                <i class="bi bi-person" style="font-size: 1.2rem;"></i>
+                <div class="fw-semibold" style="font-size: 0.8rem;">Member</div>
+                <div class="text-muted" style="font-size: 0.65rem;">View &amp; update own tasks</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="p-3 text-center cursor-pointer" style="border-radius: var(--pms-radius); transition: all 0.15s;"
+                   [style.border]="selectedRole === 'MANAGER' ? '2px solid var(--pms-indigo-600)' : '1px solid var(--pms-slate-300)'"
+                   [style.background]="selectedRole === 'MANAGER' ? 'var(--pms-indigo-50)' : '#fff'"
+                   (click)="selectRole('MANAGER')">
+                <i class="bi bi-person-badge" style="font-size: 1.2rem;"></i>
+                <div class="fw-semibold" style="font-size: 0.8rem;">Manager</div>
+                <div class="text-muted" style="font-size: 0.65rem;">Create &amp; assign tasks</div>
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="p-3 text-center cursor-pointer" style="border-radius: var(--pms-radius); transition: all 0.15s;"
+                   [style.border]="selectedRole === 'ADMIN' ? '2px solid var(--pms-indigo-600)' : '1px solid var(--pms-slate-300)'"
+                   [style.background]="selectedRole === 'ADMIN' ? 'var(--pms-indigo-50)' : '#fff'"
+                   (click)="selectRole('ADMIN')">
+                <i class="bi bi-shield-check" style="font-size: 1.2rem;"></i>
+                <div class="fw-semibold" style="font-size: 0.8rem;">Admin</div>
+                <div class="text-muted" style="font-size: 0.65rem;">Full system access</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="pms-btn-primary w-100" style="border: none; padding: 11px;" [disabled]="loading">
+          <span class="spinner-border spinner-border-sm me-2" *ngIf="loading"></span>
+          {{ loading ? 'Creating account...' : 'Create Account' }}
+        </button>
+      </form>
+    </div>
+
+    <div class="text-center pb-4">
+      <p class="text-muted mb-0" style="font-size: 0.85rem;">
+        Already have an account?
+        <a routerLink="/login" class="fw-semibold text-decoration-none" style="color: var(--pms-indigo-600);">Sign in</a>
+      </p>
+    </div>
+  </div>
+</div>
